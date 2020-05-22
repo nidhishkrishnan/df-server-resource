@@ -8,10 +8,18 @@
 		<name>Pivotal Software, Inc.</name>
 		<url>https://www.spring.io</url>
 	</organization>
+
+
+	<groupId>org.springframework.cloud</groupId>
+	<version>2.1.0.2-SNAPSHOT</version>
+	<name>spring-cloud-dataflow-rest-resource</name>
+
+
 	<parent>
 		<groupId>org.springframework.cloud</groupId>
 		<artifactId>spring-cloud-dataflow-parent</artifactId>
 		<version>2.1.0.RELEASE</version>
+
 	</parent>
 	<dependencies>
 		<dependency>
@@ -91,4 +99,11 @@
 			<artifactId>spring-cloud-scheduler-spi</artifactId>
 		</dependency>
     </dependencies>
+
+	<distributionManagement>
+		<repository>
+			<id>nexus-site</id>
+			<url>https://nexus.affinitas.de/content/repositories/snapshots/de/affinitas/</url>
+		</repository>
+	</distributionManagement>
 </project>

@@ -71,6 +71,12 @@ public class JobExecutionThinResource extends ResourceSupport {
 
 	private Date startDateTime = null;
 
+	private String endDate = "";
+
+	private String endTime = "";
+
+	private Date endDateTime = null;
+
 	private String duration = "";
 
 	private Properties jobParameters;
@@ -134,11 +140,15 @@ public class JobExecutionThinResource extends ResourceSupport {
 		if (jobExecution.getStartTime() != null) {
 			this.startDate = dateFormat.format(jobExecution.getStartTime());
 			this.startTime = timeFormat.format(jobExecution.getStartTime());
-			Date endTime = jobExecution.getEndTime() != null ? jobExecution.getEndTime() : new Date();
-			this.duration = durationFormat.format(new Date(endTime.getTime() - jobExecution.getStartTime().getTime()));
-			this.startDateTime = jobExecution.getStartTime();
-		}
 
+			this.endDateTime = jobExecution.getEndTime() != null ? jobExecution.getEndTime() : new Date();
+			this.duration = durationFormat.format(new Date(this.endDateTime.getTime() - jobExecution.getStartTime().getTime()));
+			this.startDateTime = jobExecution.getStartTime();
+
+			this.endDateTime = jobExecution.getEndTime();
+			this.endDate = dateFormat.format(this.endDateTime);
+			this.endTime = timeFormat.format(this.endDateTime);
+		}
 	}
 
 	public TimeZone getTimeZone() {
@@ -211,6 +221,18 @@ public class JobExecutionThinResource extends ResourceSupport {
 
 	public boolean isDefined() {
 		return defined;
+	}
+
+	public String getEndDate() {
+		return endDate;
+	}
+
+	public String getEndTime() {
+		return endTime;
+	}
+
+	public Date getEndDateTime() {
+		return endDateTime;
 	}
 
 	/**
